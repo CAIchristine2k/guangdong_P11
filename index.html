@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>撚手食堂 l GUANGDONG - Cuisine Cantonaise Authentique à Paris</title>
+    <meta name="description" content="Restaurant de cuisine cantonaise authentique à Paris. Commandes en ligne via Uber Eats et Deliveroo.">
+    <link rel="icon" type="image/jpeg" href="public/images/logo.JPG">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="public/images/logo.JPG" alt="撚手食堂 GUANGDONG Logo">
+                </div>
+
+                <nav class="nav-menu">
+                    <a href="#home" data-lang-key="nav-home">Accueil</a>
+                    <a href="#about" data-lang-key="nav-about">À propos</a>
+                    <a href="#menu" data-lang-key="nav-menu">Menu</a>
+                    <a href="#gallery" data-lang-key="nav-gallery">Galerie</a>
+                    <a href="#order" data-lang-key="nav-order">Commander</a>
+                    <a href="#contact" data-lang-key="nav-contact">Contact</a>
+                </nav>
+
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="fr">FR</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="zh">中文</button>
+                </div>
+
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="public/images/logo.JPG" alt="撚手食堂 GUANGDONG">
+            </div>
+            <h1 class="hero-title">撚手食堂 l GUANGDONG</h1>
+            <p class="hero-subtitle" data-lang-key="hero-subtitle">Cuisine traditionnelle du Guangdong au cœur de Paris</p>
+
+            <div class="hero-menu-button">
+                <a href="#menu" class="menu-button">
+                    <span data-lang-key="view-menu">Notre Menu</span>
+                </a>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="https://www.ubereats.com/fr-en/store/撚手食堂-guangdong-restaurant/-nbyMTUaQZC-HkDnNx8_dw?srsltid=AfmBOooVeY3S-vXuRFjz6HrXeJVUWp5W9pxRBKBIByl5Cj7ft8zwpkSv"
+                   class="cta-button uber" target="_blank">
+                    <span data-lang-key="order-uber">Commander sur Uber Eats</span>
+                </a>
+                <a href="https://deliveroo.fr/fr/menu/paris/11eme-oberkampf/special-restaurant-6-rue-petion"
+                   class="cta-button deliveroo" target="_blank">
+                    <span data-lang-key="order-deliveroo">Commander sur Deliveroo</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2 class="section-title" data-lang-key="menu-title">Notre Menu</h2>
+
+            <div class="menu-carousel">
+                <div class="carousel-container">
+                    <button class="carousel-btn prev" aria-label="Previous">‹</button>
+                    <div class="carousel-track">
+                        <div class="menu-item">
+                            <img src="public/images/menu/menu1.png" alt="Menu Page 1">
+                        </div>
+                        <div class="menu-item">
+                            <img src="public/images/menu/menu2.png" alt="Menu Page 2">
+                        </div>
+                        <div class="menu-item">
+                            <img src="public/images/menu/menu3.png" alt="Menu Page 3">
+                        </div>
+                        <div class="menu-item">
+                            <img src="public/images/menu/menu4.png" alt="Menu Page 4">
+                        </div>
+                        <div class="menu-item">
+                            <img src="public/images/menu/menu5.png" alt="Menu Page 5">
+                        </div>
+                        <div class="menu-item">
+                            <img src="public/images/menu/menu6.png" alt="Menu Page 6">
+                        </div>
+                        <div class="menu-item">
+                            <img src="public/images/menu/menu7.png" alt="Menu Page 7">
+                        </div>
+                        <div class="menu-item">
+                            <img src="public/images/menu/menu8.png" alt="Menu Page 8">
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" aria-label="Next">›</button>
+                </div>
+                <div class="carousel-dots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title" data-lang-key="gallery-title">Nos Plats</h2>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="public/images/pics/2b9cc033851d24b9ec45c53f87c1ff1e.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/2cbbd382e971f4678d0e86441d86b815.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/378c79673e433d27e9823bbea799b0ff.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/37bdf8e91efcc4970843964f532a80d4.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/3e7a200e2d24fd6bbf1ea09b4d37e992.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/4f5994117727870e37a74f0d10a8340f.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/6f5fb7abc9ca8bee6bdf96ec98d946b7.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/74bf280f811d5ed8c7ec4410d76bc28e.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/812c2146f0d6a654b8c51f2d793c1904.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/83dfe93b0278e6bcf19b99393f4a2895.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/8d6ab36e72b62e8553014614238b78d3.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/9bdc9a9ef423363d1dc454a2fdd1d2e6.jpg" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/c436fa0db6a7f20aac824bc28f82ac08.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/cb067912a206295734d0fce09d38bd5c.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="public/images/pics/f5ba589c4ee8d526e5cd10f23eed51b6.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+                <div class="gallery-item gallery-item-hidden-desktop">
+                    <img src="public/images/pics/fa4ef2a90ee532954431f96b3949fd16.JPG" alt="Plat cantonais" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order" class="order">
+        <div class="container">
+            <h2 class="section-title" data-lang-key="order-title">Commande en Ligne</h2>
+
+            <div class="order-cards">
+                <a href="https://www.ubereats.com/fr-en/store/撚手食堂-guangdong-restaurant/-nbyMTUaQZC-HkDnNx8_dw?srsltid=AfmBOooVeY3S-vXuRFjz6HrXeJVUWp5W9pxRBKBIByl5Cj7ft8zwpkSv"
+                   class="order-card uber" target="_blank">
+                    <div class="order-icon">🚗</div>
+                    <h3>Uber Eats</h3>
+                    <p data-lang-key="order-uber-desc">Livraison rapide à domicile</p>
+                    <span class="order-arrow">→</span>
+                </a>
+
+                <a href="https://deliveroo.fr/fr/menu/paris/11eme-oberkampf/special-restaurant-6-rue-petion"
+                   class="order-card deliveroo" target="_blank">
+                    <div class="order-icon">🛵</div>
+                    <h3>Deliveroo</h3>
+                    <p data-lang-key="order-deliveroo-desc">Commandez dès maintenant</p>
+                    <span class="order-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-lang-key="contact-title">Contact</h2>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3 data-lang-key="contact-address">Adresse</h3>
+                        <p>6 Rue Pétion, 75011 Paris</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3 data-lang-key="contact-phone">Téléphone</h3>
+                        <a href="tel:0956187885" class="phone-link">09 56 18 78 85</a>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3 data-lang-key="contact-social">Réseaux Sociaux</h3>
+                        <a href="https://www.instagram.com/sunnyhu355?igsh=anMzdGhpZW9oaWoy"
+                           class="social-link" target="_blank">
+                            📸 Instagram
+                        </a>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.934456!2d2.381234!3d48.862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66df8a5c5e5e5%3A0x1234567890!2s6%20Rue%20P%C3%A9tion%2C%2075011%20Paris!5e0!3m2!1sen!2sfr!4v1234567890"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title" data-lang-key="about-title">À propos de nous</h2>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-lang-key="about-description">
+                        撚手食堂 est une enseigne authentique de cuisine cantonaise originaire de Guangzhou.
+                        Le restaurant de Pétion s'inspire du style des 茶餐廳 (cha chaan teng) locaux,
+                        avec une ambiance rétro et tendance, différente des grandes brasseries traditionnelles de Canton.
+                    </p>
+
+                    <div class="features">
+                        <div class="feature">
+                            <h3 data-lang-key="specialties">Spécialités</h3>
+                            <p data-lang-key="specialties-desc">Cuisine traditionnelle du Guangdong (粤菜)</p>
+                        </div>
+                        <div class="feature">
+                            <h3 data-lang-key="services">Services</h3>
+                            <p data-lang-key="services-desc">Plats végétaliens • Chiens autorisés</p>
+                        </div>
+                        <div class="feature">
+                            <h3 data-lang-key="payment">Paiements</h3>
+                            <p data-lang-key="payment-desc">Ticket Restaurant • Chèque Déjeuner • CB • Espèces</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-images">
+                    <img src="public/images/hero.JPG" alt="Restaurant Interior" class="about-img main-img">
+                    <img src="public/images/deco2.jpg" alt="Restaurant Decoration" class="about-img secondary-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <p>&copy; 2024 撚手食堂 l GUANGDONG. Tous droits réservés.</p>
+                    <p class="footer-services" data-lang-key="footer-services">
+                        Plats végétaliens • Chiens autorisés • Ticket Restaurant • CB • Espèces
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <a href="mentions-legales.html" data-lang-key="legal-notices">Mentions légales</a>
+                    <span>•</span>
+                    <a href="politique-confidentialite.html" data-lang-key="privacy-policy">Politique de confidentialité</a>
+                </div>
+
+                <div class="footer-powered">
+                    <p>Powered by <a href="https://odyssey.ad/partners" target="_blank" rel="noopener noreferrer">Odyssey Technology</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
