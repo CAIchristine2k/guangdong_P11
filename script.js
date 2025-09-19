@@ -8,10 +8,10 @@ const translations = {
         'nav-order': 'Commander',
         'nav-contact': 'Contact',
         'hero-subtitle': 'Cuisine traditionnelle du Guangdong au cœur de Paris',
-        'view-menu': 'Notre Menu',
         'order-uber': 'Commander sur Uber Eats',
-        'order-deliveroo': 'Commander sur Deliveroo',
+        'contact-btn': 'Nous contacter',
         'about-title': 'À propos de nous',
+        'restaurant-title': 'Notre Restaurant',
         'about-description': '撚手食堂 est une enseigne authentique de cuisine cantonaise originaire de Guangzhou. Le restaurant de Pétion s\'inspire du style des 茶餐廳 (cha chaan teng) locaux, avec une ambiance rétro et tendance, différente des grandes brasseries traditionnelles de Canton.',
         'specialties': 'Spécialités',
         'specialties-desc': 'Cuisine traditionnelle du Guangdong (粤菜)',
@@ -23,7 +23,6 @@ const translations = {
         'gallery-title': 'Nos Plats',
         'order-title': 'Commande en Ligne',
         'order-uber-desc': 'Livraison rapide à domicile',
-        'order-deliveroo-desc': 'Commandez dès maintenant',
         'contact-title': 'Contact',
         'contact-address': 'Adresse',
         'contact-phone': 'Téléphone',
@@ -40,10 +39,10 @@ const translations = {
         'nav-order': 'Order',
         'nav-contact': 'Contact',
         'hero-subtitle': 'Traditional Guangdong cuisine in the heart of Paris',
-        'view-menu': 'Our Menu',
         'order-uber': 'Order on Uber Eats',
-        'order-deliveroo': 'Order on Deliveroo',
+        'contact-btn': 'Contact us',
         'about-title': 'About Us',
+        'restaurant-title': 'Our Restaurant',
         'about-description': '撚手食堂 is an authentic Cantonese cuisine brand from Guangzhou. The Pétion branch reflects the charm of local cha chaan teng, blending retro elements with a modern and trendy style, unlike traditional Cantonese banquet restaurants.',
         'specialties': 'Specialties',
         'specialties-desc': 'Traditional Guangdong cuisine (粤菜)',
@@ -55,7 +54,6 @@ const translations = {
         'gallery-title': 'Our Dishes',
         'order-title': 'Online Order',
         'order-uber-desc': 'Fast home delivery',
-        'order-deliveroo-desc': 'Order now',
         'contact-title': 'Contact',
         'contact-address': 'Address',
         'contact-phone': 'Phone',
@@ -72,10 +70,10 @@ const translations = {
         'nav-order': '線上訂餐',
         'nav-contact': '聯絡我們',
         'hero-subtitle': '巴黎市中心的正宗廣東菜',
-        'view-menu': '我們的菜單',
         'order-uber': '透過Uber Eats訂餐',
-        'order-deliveroo': '透過Deliveroo訂餐',
+        'contact-btn': '聯絡我們',
         'about-title': '關於我們',
+        'restaurant-title': '我們的餐廳',
         'about-description': '撚手食堂是一個廣州本地粵菜品牌，起源於北京路的分店，位於地鐵六號線北京路站上蓋的天河城百貨大樓內。店鋪裝修結合了本地茶餐廳的元素，並不是傳統粵菜酒樓的形式，復古之中又帶有時尚潮流氣息。',
         'specialties': '招牌菜',
         'specialties-desc': '傳統廣東菜 (粵菜)',
@@ -87,7 +85,6 @@ const translations = {
         'gallery-title': '美食展示',
         'order-title': '線上訂餐',
         'order-uber-desc': '快速送餐到府',
-        'order-deliveroo-desc': '立即訂餐',
         'contact-title': '聯絡我們',
         'contact-address': '地址',
         'contact-phone': '電話',
@@ -310,33 +307,23 @@ function initHeaderScrollEffect() {
     });
 }
 
-// Gallery lazy loading and lightbox effect
+// Gallery lightbox effect (simplified without lazy loading)
 function initGallery() {
     const galleryItems = document.querySelectorAll('.gallery-item');
 
-    // Intersection Observer for lazy loading
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target.querySelector('img');
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                }
-                img.classList.add('loaded');
-                observer.unobserve(entry.target);
-            }
-        });
-    });
-
     galleryItems.forEach(item => {
-        imageObserver.observe(item);
+        const img = item.querySelector('img');
 
-        // Add click handler for lightbox effect
-        item.addEventListener('click', () => {
-            const img = item.querySelector('img');
-            openLightbox(img.src, img.alt);
-        });
+        // Ensure images are visible
+        if (img) {
+            img.style.opacity = '1';
+            img.classList.add('loaded');
+
+            // Add click handler for lightbox effect
+            item.addEventListener('click', () => {
+                openLightbox(img.src, img.alt);
+            });
+        }
     });
 }
 
@@ -426,29 +413,73 @@ function openLightbox(src, alt) {
 
 // Mobile menu functionality
 function initMobileMenu() {
-    mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         navMenu.classList.toggle('active');
         mobileMenuBtn.classList.toggle('active');
 
-        // Animate mobile menu button
-        const spans = mobileMenuBtn.querySelectorAll('span');
-        if (mobileMenuBtn.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-            spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+        // Prevent body scroll when menu is open
+        if (navMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
         } else {
+            document.body.style.overflow = '';
+        }
+
+        // Animate mobile menu button with CSS classes instead of inline styles
+        const spans = mobileMenuBtn.querySelectorAll('span');
+        spans.forEach(span => {
+            span.style.background = mobileMenuBtn.classList.contains('active') ? '#d32f2f' : '#2c3e50';
+        });
+    });
+
+    // Close mobile menu when clicking on menu links
+    navMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            navMenu.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+
+            const spans = mobileMenuBtn.querySelectorAll('span');
             spans.forEach(span => {
-                span.style.transform = '';
-                span.style.opacity = '';
+                span.style.background = '#2c3e50';
             });
         }
     });
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.header')) {
+        if (!e.target.closest('.header') && navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');
             mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            spans.forEach(span => {
+                span.style.background = '#2c3e50';
+            });
+        }
+    });
+
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            spans.forEach(span => {
+                span.style.background = '#2c3e50';
+            });
+        }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
 }
@@ -474,6 +505,139 @@ function initScrollAnimations() {
     });
 }
 
+// Parallax effect for decorative elements
+function initParallaxEffect() {
+    const parallaxElements = document.querySelectorAll('.container::before, .about::after, .gallery::before');
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+
+        parallaxElements.forEach(element => {
+            element.style.transform = `translateY(${rate}px)`;
+        });
+    });
+}
+
+// Add cursor trail effect
+function initCursorTrail() {
+    const trail = [];
+    const trailLength = 10;
+
+    for (let i = 0; i < trailLength; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'cursor-trail';
+        dot.style.cssText = `
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: rgba(211, 47, 47, ${0.5 - i * 0.05});
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        `;
+        document.body.appendChild(dot);
+        trail.push(dot);
+    }
+
+    let mouseX = 0, mouseY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function updateTrail() {
+        let currentX = mouseX;
+        let currentY = mouseY;
+
+        trail.forEach((dot, index) => {
+            dot.style.left = currentX + 'px';
+            dot.style.top = currentY + 'px';
+
+            const nextDot = trail[index + 1];
+            if (nextDot) {
+                currentX += (parseFloat(nextDot.style.left) - currentX) * 0.3;
+                currentY += (parseFloat(nextDot.style.top) - currentY) * 0.3;
+            }
+        });
+
+        requestAnimationFrame(updateTrail);
+    }
+
+    updateTrail();
+}
+
+// Magnetic buttons effect
+function initMagneticButtons() {
+    const magneticElements = document.querySelectorAll('.cta-button, .lang-btn, .order-card');
+
+    magneticElements.forEach(element => {
+        element.addEventListener('mousemove', (e) => {
+            const rect = element.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            element.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+        });
+
+        element.addEventListener('mouseleave', () => {
+            element.style.transform = 'translate(0, 0)';
+        });
+    });
+}
+
+// Scroll-triggered animations (simplified)
+function initAdvancedScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, observerOptions);
+
+    // Add animation classes (excluding gallery items to prevent image hiding)
+    const elementsToAnimate = [
+        { selector: '.feature', animation: 'scaleIn' },
+        { selector: '.order-card', animation: 'slideInFromRight' },
+        { selector: '.contact-item', animation: 'slideInFromLeft' }
+    ];
+
+    elementsToAnimate.forEach(({ selector, animation }) => {
+        document.querySelectorAll(selector).forEach((element, index) => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            element.style.transitionDelay = `${index * 0.1}s`;
+
+            observer.observe(element);
+        });
+    });
+
+    // Gallery items get simpler animation that doesn't hide images
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach((item, index) => {
+        item.style.opacity = '1'; // Always visible
+        item.style.transform = 'scale(0.95)';
+        item.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        item.style.transitionDelay = `${index * 0.05}s`;
+
+        // Simple scale-in animation
+        setTimeout(() => {
+            item.style.transform = 'scale(1)';
+        }, 100 + (index * 50));
+    });
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Language switching event listeners
@@ -491,35 +655,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initScrollAnimations();
 
+    // Initialize new features
+    initParallaxEffect();
+    initCursorTrail();
+    initMagneticButtons();
+    initAdvancedScrollAnimations();
+
     // Set initial language
     updateLanguage('fr');
 
-    console.log('🍜 撚手食堂 website loaded successfully!');
 });
 
-// Performance optimizations
-window.addEventListener('load', () => {
-    // Preload critical images
-    const criticalImages = [
-        'public/images/hero.JPG',
-        'public/images/deco.JPG'
-    ];
 
-    criticalImages.forEach(src => {
-        const img = new Image();
-        img.src = src;
-    });
-});
-
-// Handle resize events
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-        // Recalculate carousel dimensions if needed
-        const carousel = document.querySelector('.carousel-track');
-        if (carousel) {
-            carousel.style.transform = `translateX(-${carousel.currentIndex * 100}%)`;
-        }
-    }, 250);
-});
